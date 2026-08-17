@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Employee of the Month — GameCraft 2026</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="game-container">
+
+  <!-- ============================================================
+       SCREEN 1 — WELCOME / PLAYER NAME CAPTURE + CHARACTER SELECT
+       ============================================================ -->
+  <div id="welcome-screen" class="screen active" role="dialog" aria-labelledby="welcome-title">
+    <div class="screen-inner">
+      <p class="event-tag">UST GameCraft 2026</p>
+      <h1 id="welcome-title" class="game-title">🏆 Employee of the Month</h1>
+      <p class="game-subtitle">A 60-second office corridor dash — collect wins, dodge chaos!</p>
+
+      <form id="name-form" novalidate>
+        <label for="player-name-input" class="field-label">Enter your name</label>
+        <input
+          type="text"
+          id="player-name-input"
+          name="playerName"
+          maxlength="20"
+          placeholder="e.g. Nimmy"
+          autocomplete="off"
+          aria-describedby="name-error"
+          required
+        >
+        <p id="name-error" class="field-error" role="alert"></p>
+      </form>
+
+      <h2 class="section-heading">Choose Your Character</h2>
+      <div id="character-grid" class="character-grid" role="radiogroup" aria-label="Choose your character">
+        <button type="button" class="char-card selected" data-id="tech-innovator" data-emoji="🧑‍💻" data-name="Tech Innovator" role="radio" aria-checked="true">
+          <span class="char-emoji" aria-hidden="true">🧑‍💻</span>
+          <span class="char-name">Tech Innovator</span>
+        </button>
+        <button type="button" class="char-card" data-id="software-engineer" data-emoji="👩‍💻" data-name="Software Engineer" role="radio" aria-checked="false">
+          <span class="char-emoji" aria-hidden="true">👩‍💻</span>
+          <span class="char-name">Software Engineer</span>
+        </button>
+        <button type="button" class="char-card" data-id="robo-associate" data-emoji="🤖" data-name="Robo Associate" role="radio" aria-checked="false">
+          <span class="char-emoji" aria-hidden="true">🤖</span>
+          <span class="char-name">Robo Associate</span>
+        </button>
+        <button type="button" class="char-card" data-id="support-champion" data-emoji="🦸" data-name="Support Champion" role="radio" aria-checked="false">
+          <span class="char-emoji" aria-hidden="true">🦸</span>
+          <span class="char-name">Support Champion</span>
+        </button>
+        <button type="button" class="char-card" data-id="team-lead" data-emoji="👨‍💼" data-name="Team Lead" role="radio" aria-checked="false">
+          <span class="char-emoji" aria-hidden="true">👨‍💼</span>
+          <span class="char-name">Team Lead</span>
+        </button>
+      </div>
+
+      <button id="continue-btn" class="primary-btn" type="button">Continue ➜</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCREEN 2 — INSTRUCTIONS
+       ============================================================ -->
+  <div id="instructions-screen" class="screen" role="dialog" aria-labelledby="instructions-title">
+    <div class="screen-inner">
+      <h2 id="instructions-title" class="section-heading">How To Play</h2>
+      <p class="instructions-summary">
+        Run down the corridor for <strong>exactly 60 seconds</strong>. Collect positive items,
+        avoid workplace hazards, and grab power-ups to boost your run. Score the highest to become
+        <strong>Employee of the Month</strong>!
+      </p>
+
+      <div class="howto-columns">
+        <div class="howto-col">
+          <h3>🎮 Controls</h3>
+          <ul>
+            <li><b>↑ / W / Swipe Up</b> — move to upper lane</li>
+            <li><b>↓ / S / Swipe Down</b> — move to lower lane</li>
+            <li><b>Space / → / Tap</b> — jump over a hazard</li>
+          </ul>
+
+          <h3>🧮 Scoring</h3>
+          <ul>
+            <li>✅ Each <b>positive collectible</b>: <b>+10 points</b></li>
+            <li>⚠️ Each <b>hazard hit</b>: <b>−5 points</b> (jump to dodge!)</li>
+            <li>📏 Distance travelled adds small bonus points automatically</li>
+            <li>Score can never go below 0, and freezes the instant time runs out</li>
+          </ul>
+
+          <h3>⏱️ Duration</h3>
+          <ul>
+            <li>You have exactly <b>60 seconds</b> — timer is always visible</li>
+            <li>Timer flashes at <b>10 seconds</b> remaining as a warning</li>
+            <li>Game stops automatically at <b>0 seconds</b></li>
+          </ul>
+        </div>
+
+        <div class="howto-col">
+          <h3>✅ Positive Collectibles</h3>
+          <ul class="emoji-list">
+            <li>💡 Innovation</li><li>📚 Learning</li><li>🤝 Teamwork</li>
+            <li>🌟 Customer Appreciation</li><li>🚀 Automation</li>
+            <li>🎯 Goal Achievement</li><li>🏅 Certification</li><li>✅ Quality Delivery</li>
+          </ul>
+
+          <h3>⚠️ Hazards (avoid!)</h3>
+          <ul class="emoji-list">
+            <li>🐛 Bug</li><li>🚨 Escalation</li><li>⏳ Delay</li><li>📢 Critical Alert</li>
+            <li>💥 Production Issue</li><li>🔥 Priority Incident</li>
+            <li>📉 SLA Breach</li><li>⚠️ Risk</li>
+          </ul>
+
+          <h3>⭐ Power-Ups</h3>
+          <ul class="emoji-list">
+            <li>🛡️ Shield — blocks the next hazards for 6s</li>
+            <li>🧲 Magnet — pulls in nearby collectibles for 6s</li>
+            <li>⚡ Speed Boost — faster pace for 6s</li>
+            <li>❤️ Extra Life — restores a missed hazard hit (no penalty next time)</li>
+            <li>🧠 Knowledge Boost — slows everything down for 5s</li>
+            <li>🚀 Hyper Sprint — invincible + fastest pace for 5s</li>
+          </ul>
+        </div>
+      </div>
+
+      <button id="start-game-btn" class="primary-btn" type="button">▶ Start 60-Second Run</button>
+      <button id="back-to-welcome-btn" class="secondary-btn" type="button">⬅ Back</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCREEN 3 — GAMEPLAY
+       ============================================================ -->
+  <div id="game-screen" class="screen">
+    <div id="hud">
+      <div class="hud-item" id="hud-player-name">👤 <span></span></div>
+      <div class="hud-item" id="hud-score">🏆 Score: <span>0</span></div>
+      <div class="hud-item" id="hud-timer">⏱️ <span>60</span>s</div>
+      <div class="hud-item" id="hud-status" aria-live="polite"></div>
+      <button id="mute-btn" class="hud-item icon-btn" type="button" aria-pressed="false" title="Mute">🔊</button>
+    </div>
+
+    <div id="track">
+      <div class="lane" data-lane="0"></div>
+      <div class="lane" data-lane="1"></div>
+      <div class="lane" data-lane="2"></div>
+      <div id="player">🧑‍💻</div>
+    </div>
+
+    <div id="achievement-toast" aria-live="polite"></div>
+
+    <!-- Mobile touch controls -->
+    <div id="touch-controls">
+      <button id="touch-up" class="touch-btn" type="button" aria-label="Move up">▲</button>
+      <button id="touch-jump" class="touch-btn" type="button" aria-label="Jump">⤒ JUMP</button>
+      <button id="touch-down" class="touch-btn" type="button" aria-label="Move down">▼</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCREEN 4 — GAME OVER / RESULT
+       ============================================================ -->
+  <div id="gameover-screen" class="screen" role="dialog" aria-labelledby="gameover-title">
+    <div class="screen-inner">
+      <h1 id="gameover-title" class="game-title">TIME'S UP!</h1>
+      <p id="gameover-subtitle" class="game-subtitle">Well played, <span id="gameover-player-name">Player</span>!</p>
+
+      <div id="final-reward-badge" class="reward-badge">🚀 Rising Talent</div>
+
+      <div class="result-stats">
+        <p id="final-score-text" class="final-score">FINAL SCORE: <span>0</span></p>
+        <p id="personal-best-text" class="final-distance">PERSONAL BEST: <span>0</span></p>
+        <p id="completion-status-text" class="completion-status">Status: Completed — full 60 seconds</p>
+      </div>
+
+      <button id="restart-btn" class="primary-btn" type="button">🔁 Play Again</button>
+      <button id="view-leaderboard-btn" class="secondary-btn" type="button">📋 View Leaderboard</button>
+      <button id="change-char-btn" class="secondary-btn" type="button">👤 Change Character</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCREEN 5 — LOCAL LEADERBOARD
+       ============================================================ -->
+  <div id="leaderboard-screen" class="screen" role="dialog" aria-labelledby="leaderboard-title">
+    <div class="screen-inner">
+      <h2 id="leaderboard-title" class="section-heading">📋 Local Top 10 Leaderboard</h2>
+      <p class="leaderboard-note">Stored on this device/browser only — not a centralized event leaderboard.</p>
+      <ol id="leaderboard-list" class="leaderboard-list"></ol>
+      <button id="clear-leaderboard-btn" class="secondary-btn" type="button">🗑️ Clear Local Data</button>
+      <button id="leaderboard-back-btn" class="primary-btn" type="button">⬅ Back</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/timer.js"></script>
+<script src="js/score.js"></script>
+<script src="js/player.js"></script>
+<script src="js/leaderboard.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
